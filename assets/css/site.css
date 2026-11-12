@@ -1,0 +1,707 @@
+/*
+ * hasinajalal.github.io — research and teaching portfolio
+ *
+ * Theme values are the live site's own tokens: paper #F6F6F6, ink #281A39,
+ * secondary ink #5C5168, link #2061B7. No gradients, shadows or radii, because
+ * the source theme declares none (--bg-gradient:none, --shd:none, --rd:0px).
+ */
+
+/* --- fonts -------------------------------------------------------------
+ * Syne and Questrial, SIL OFL 1.1. The files are the latin subsets the live
+ * site itself serves, copied byte for byte; see ../fonts/OFL.txt.
+ */
+@font-face {
+  font-family: "Questrial";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/questrial-400.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Syne";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/syne-400.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+/* --- tokens ------------------------------------------------------------ */
+:root {
+  --paper: #f6f6f6;
+  --ink: #281a39;
+  --ink-secondary: #5c5168;
+  --link: #2061b7;
+
+  --display: "Syne", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --text: "Questrial", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --band: 980px;
+  --gutter: clamp(20px, 5vw, 40px);
+  --measure: 35rem;
+
+  --masthead-height: 64px;
+}
+
+/* --- base -------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--text);
+  font-size: 17px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+p,
+ul,
+ol,
+blockquote,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding-left: 0;
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --- layout ------------------------------------------------------------ */
+.band {
+  width: min(100% - (2 * var(--gutter)), var(--band));
+  margin-inline: auto;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 16px;
+  z-index: 30;
+  padding: 12px 16px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 15px;
+  text-decoration: none;
+  transform: translateY(-120%);
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(8px);
+  color: var(--paper);
+  outline-color: var(--paper);
+}
+
+/* --- masthead ---------------------------------------------------------- */
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--paper);
+  border-bottom: 1px solid var(--ink);
+}
+
+.masthead__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 24px;
+  min-height: var(--masthead-height);
+  padding-block: 10px;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.wordmark:hover {
+  color: var(--ink);
+}
+
+.mark {
+  display: block;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  fill: var(--ink);
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px clamp(10px, 2.4vw, 28px);
+  margin: 0;
+  list-style: none;
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 1px;
+  color: var(--ink);
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  color: var(--link);
+}
+
+.site-nav a[aria-current] {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* --- hero -------------------------------------------------------------- */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 348px);
+  grid-template-areas:
+    "head figure"
+    "body figure";
+  column-gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+  padding-block: clamp(48px, 7vw, 84px) clamp(40px, 5vw, 64px);
+}
+
+.hero__head {
+  grid-area: head;
+}
+
+.hero__body {
+  grid-area: body;
+  margin-top: clamp(28px, 4vw, 36px);
+  max-width: var(--measure);
+}
+
+.hero__figure {
+  grid-area: figure;
+  justify-self: end;
+  width: 100%;
+  max-width: 348px;
+}
+
+.hero__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 348 / 324;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero h1 {
+  max-width: 18ch;
+  font-size: clamp(42px, 6.4vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.hero__role {
+  margin-top: clamp(16px, 2.4vw, 24px);
+  max-width: 34ch;
+  color: var(--ink-secondary);
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+.hero__body p + p {
+  margin-top: 20px;
+}
+
+/* --- sections ---------------------------------------------------------- */
+.section {
+  border-top: 1px solid var(--ink);
+  padding-block: clamp(48px, 7vw, 88px);
+}
+
+.section,
+.site-main {
+  scroll-margin-top: calc(var(--masthead-offset, var(--masthead-height)) + 20px);
+}
+
+/* Anchor jumps move focus to the section (tabindex="-1") so the next Tab
+   continues from there; the outline would be a rectangle around a whole
+   screenful that the reader did not choose as a target. */
+.section:focus {
+  outline: none;
+}
+
+.section__title {
+  font-size: clamp(26px, 3vw, 30px);
+  letter-spacing: -0.02em;
+}
+
+.section__lead {
+  margin-top: clamp(20px, 3vw, 28px);
+  max-width: var(--measure);
+}
+
+.section__lead p + p {
+  margin-top: 20px;
+}
+
+.section__title + .group {
+  margin-top: clamp(28px, 4vw, 36px);
+}
+
+.group {
+  margin-top: clamp(40px, 5vw, 60px);
+}
+
+.group__title {
+  font-size: 21px;
+  letter-spacing: -0.01em;
+}
+
+.group__title + * {
+  margin-top: 16px;
+}
+
+.group p,
+.group li {
+  max-width: var(--measure);
+}
+
+/* --- research ---------------------------------------------------------- */
+.interests {
+  margin: 0;
+  max-width: var(--measure);
+  list-style: none;
+}
+
+.interests li + li {
+  margin-top: 4px;
+}
+
+/* Two columns once the measure has room for them; a single column below, so
+   the longest interest still fits on one line on a phone. */
+@media (min-width: 640px) {
+  .interests {
+    /* The list is an index, not prose: give the two columns enough room to
+       keep most interests on one line while the paragraphs stay at --measure. */
+    max-width: 46rem;
+    columns: 2;
+    column-gap: clamp(24px, 4vw, 48px);
+  }
+
+  .interests li {
+    break-inside: avoid;
+  }
+}
+
+.pub-group {
+  margin-top: clamp(32px, 4vw, 44px);
+}
+
+/* The first publication group follows the research-interests group, so it
+   needs the full group gap rather than the gap between two categories. */
+.group + .pub-group {
+  margin-top: clamp(40px, 5vw, 60px);
+}
+
+.pub-group__label {
+  font-family: var(--display);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.citations {
+  margin-top: 14px;
+  list-style: none;
+}
+
+.citations li {
+  max-width: var(--measure);
+  padding-left: 1.5em;
+  text-indent: -1.5em;
+  overflow-wrap: anywhere;
+}
+
+.citations li + li {
+  margin-top: 14px;
+}
+
+.citation-note {
+  max-width: var(--measure);
+  margin-top: 12px;
+  color: var(--ink-secondary);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* --- teaching ---------------------------------------------------------- */
+.teaching-entry {
+  margin-top: clamp(32px, 4vw, 44px);
+  padding-top: clamp(20px, 3vw, 24px);
+  /* The source theme's own light divider (#c3bfc7), so an entry reads as a
+     row inside a group rather than as another section. */
+  border-top: 1px solid #c3bfc7;
+}
+
+.teaching-entry__title {
+  font-size: 19px;
+  letter-spacing: -0.01em;
+}
+
+.teaching-entry__meta {
+  margin-top: 8px;
+  color: var(--ink-secondary);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.teaching-entry__detail {
+  margin-top: 14px;
+  max-width: var(--measure);
+}
+
+.courses {
+  margin-top: 14px;
+  list-style: none;
+}
+
+.courses li + li {
+  margin-top: 6px;
+}
+
+.note {
+  max-width: var(--measure);
+  margin-top: 12px;
+  color: var(--ink-secondary);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.feedback__source {
+  font-size: 17px;
+}
+
+.feedback__meta {
+  margin-top: 6px;
+  color: var(--ink-secondary);
+  font-size: 15px;
+}
+
+.feedback blockquote {
+  max-width: var(--measure);
+  margin-top: 20px;
+}
+
+.feedback__note {
+  max-width: var(--measure);
+  margin-top: clamp(24px, 3vw, 32px);
+}
+
+/* --- education --------------------------------------------------------- */
+.education {
+  margin-top: 16px;
+  list-style: none;
+}
+
+.education li {
+  max-width: var(--measure);
+}
+
+.education li + li {
+  margin-top: 10px;
+}
+
+.cv-note {
+  margin-top: clamp(32px, 4vw, 44px);
+  color: var(--ink-secondary);
+  font-size: 15px;
+}
+
+/* --- contact ----------------------------------------------------------- */
+.contact-list {
+  margin-top: clamp(24px, 3vw, 32px);
+  list-style: none;
+  max-width: var(--measure);
+}
+
+.contact-list li {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 4px 24px;
+  align-items: baseline;
+  padding-block: 14px;
+  border-top: 1px solid var(--ink);
+}
+
+.contact-list li:last-child {
+  border-bottom: 1px solid var(--ink);
+}
+
+.contact-list .label {
+  color: var(--ink-secondary);
+  font-family: var(--display);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.contact-list p {
+  overflow-wrap: anywhere;
+}
+
+.contact-list a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* --- footer ------------------------------------------------------------ */
+.site-footer {
+  border-top: 1px solid var(--ink);
+  padding-block: clamp(28px, 4vw, 40px) clamp(40px, 6vw, 64px);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px 32px;
+}
+
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--display);
+  font-size: 17px;
+  letter-spacing: -0.01em;
+}
+
+.footer-brand .mark {
+  width: 20px;
+  height: 20px;
+}
+
+.footer-meta {
+  color: var(--ink-secondary);
+  font-size: 15px;
+}
+
+.footer-meta a {
+  color: var(--link);
+}
+
+.footer-meta p + p {
+  margin-top: 4px;
+}
+
+/* --- 404 --------------------------------------------------------------- */
+.message {
+  padding-block: clamp(64px, 10vw, 120px);
+}
+
+.message h1 {
+  font-size: clamp(34px, 5vw, 48px);
+  letter-spacing: -0.03em;
+}
+
+.message p {
+  margin-top: 20px;
+  max-width: 46ch;
+}
+
+.message .back {
+  margin-top: 32px;
+  font-size: 17px;
+}
+
+/* --- motion ------------------------------------------------------------
+ * The site is static; the only animation is one short first-paint fade,
+ * and only for readers who have not asked for reduced motion.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .site-main {
+    animation: page-fade 150ms linear both;
+  }
+}
+
+@keyframes page-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* --- small screens ----------------------------------------------------- */
+@media (max-width: 879px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "head"
+      "figure"
+      "body";
+    row-gap: 28px;
+  }
+
+  .hero__figure {
+    justify-self: start;
+    max-width: 348px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --masthead-height: 104px;
+  }
+
+  .hero__figure {
+    max-width: 272px;
+  }
+
+  .masthead__inner {
+    padding-block: 6px 4px;
+  }
+
+  .site-nav {
+    width: 100%;
+  }
+
+  .site-nav ul {
+    justify-content: space-between;
+    gap: 2px 8px;
+  }
+
+  /* 13px keeps all four labels on one row at 320px in both engines, so the
+     masthead stays 104px and the anchor offsets below stay correct. */
+  .site-nav a {
+    font-size: 13px;
+  }
+
+  .contact-list li {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* --- print ------------------------------------------------------------- */
+@media print {
+  :root {
+    --paper: #fff;
+    --ink: #000;
+    --ink-secondary: #333;
+    --link: #000;
+    --gutter: 10mm;
+    --masthead-height: 0px;
+  }
+
+  body {
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+
+  .masthead,
+  .skip-link {
+    display: none;
+  }
+
+  .site-main {
+    animation: none;
+  }
+
+  .section {
+    padding-block: 18pt;
+    border-top: 1px solid #000;
+  }
+
+  .hero {
+    display: block;
+    padding-block: 0 18pt;
+  }
+
+  .hero__figure {
+    margin-top: 12pt;
+    max-width: 220px;
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    overflow-wrap: anywhere;
+  }
+
+  .citations li,
+  .education li,
+  .teaching-entry,
+  .feedback blockquote,
+  .feedback__source {
+    page-break-inside: avoid;
+  }
+}
