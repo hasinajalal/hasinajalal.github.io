@@ -38,10 +38,16 @@ Two sections of the live home page are deliberately not reproduced here:
 feed). They are not deleted from the source and should not be re-added without
 the owner asking; the page is a research and teaching portfolio.
 
-The feedback block reproduces three of the source's selected course-evaluation
-comments. The source's separate "Unsolicited Messages from Students" subsection
-is not reproduced; the in-page heading and the source's own "Selected Comments"
-line disclose that this is a selection.
+The feedback section reproduces the source's student feedback in full and in
+the source's order: all four selected course-evaluation comments, then the
+three messages under its bold "Unsolicited Messages from Students" sub-label,
+then its `[Full unedited evaluations available on request.]` note. The source's
+first evaluation entry puts two excerpts on one line; they stay together in one
+blockquote rather than being split, and nothing inside the quotation marks is
+reworded. The evaluative headings are the source's own labels: "Student
+feedback" is its "STUDENT FEEDBACK" heading (sentence case, like the others),
+and "Unsolicited messages from students" is its bold sub-label, promoted to a
+group title because this page has no heading level between section and group.
 
 ## Source gaps preserved
 
@@ -95,7 +101,10 @@ so the page does not shift while the image loads.
 - One `<h1>` (`Hasina Jalal`), `<h2>` per section, `<h3>` per group inside a
   section — the publication category labels are `<h3>`s under the Research
   `<h2>` too — and `<h4>` for an institution entry inside a group. Keep that
-  order.
+  order. Bold sub-labels in the source ("COMMUNITY AND VOLUNTEER TEACHING",
+  "STUDENT FEEDBACK", "Unsolicited Messages from Students") become `<h3>` group
+  titles; none of them gets an `<h4>`, which is reserved for institution
+  entries.
 - Self-hosted fonts only; no CDN, no analytics, no external CSS or JS.
 - Motion budget is one 150 ms first-paint fade, under
   `prefers-reduced-motion: no-preference`. Nothing else animates, on purpose.
