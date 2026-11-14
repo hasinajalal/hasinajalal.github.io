@@ -33,6 +33,14 @@ of the line (`- Recipient of the 2026 Carolyn B. Dexter Award, ...`); the words,
 the year and its place under the revise-and-resubmit paper are unchanged.
 Changing any of it makes this page disagree with the site it summarises.
 
+One block is now the owner's own wording rather than the source's: the
+Background group's "Selected fellowships and affiliations" paragraph, supplied
+on 2026-11-12. It names the institutions she has held fellowships and
+appointments at (Cornell, Pittsburgh, the Mercatus Center at George Mason, and
+Georgetown's School of Foreign Service) instead of the source's three named
+fellowships, and it adds Scholars at Risk. Treat it as newer than the site it
+summarises and do not restore the source sentence.
+
 Two sections of the live home page are deliberately not reproduced here:
 "Civil Society and Advocacy" (with the awards paragraph) and "Latest" (the news
 feed). They are not deleted from the source and should not be re-added without
