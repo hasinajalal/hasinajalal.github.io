@@ -280,7 +280,7 @@ img {
 /* --- sections ---------------------------------------------------------- */
 .section {
   border-top: 1px solid var(--ink);
-  padding-block: clamp(48px, 7vw, 88px);
+  padding-block: clamp(32px, 4vw, 48px);
 }
 
 .section,
